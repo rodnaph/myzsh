@@ -1,0 +1,11 @@
+
+set -o vi
+
+function prompt_char {
+    git branch 1>/dev/null 2>/dev/null && echo '±' && return
+    svn info 1>/dev/null 2>/dev/null && echo '☿' && return
+    echo '○'
+}
+
+PROMPT="$(prompt_char) %d> "
+
