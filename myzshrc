@@ -1,6 +1,12 @@
 
 set -o vi
 
+bindkey -v
+bindkey '\e[3~' delete-char
+bindkey '^R' history-incremental-search-backward
+
+PATH=$HOME/bin:$PATH
+
 function prompt_char {
     git branch 1>/dev/null 2>/dev/null && echo '±' && return
     svn info 1>/dev/null 2>/dev/null && echo '☿' && return
