@@ -7,11 +7,25 @@ bindkey '^R' history-incremental-search-backward
 
 PATH=$HOME/bin:$PATH
 
-function prompt_char {
+S_TAB_TITLE=""
+
+function tab {
+    S_TAB_TITLE=$1
+}
+
+function vcs_prompt_char {
     git branch 1>/dev/null 2>/dev/null && echo '±' && return
     svn info 1>/dev/null 2>/dev/null && echo '☿' && return
     echo '○'
 }
 
-PROMPT="$(prompt_char) %d> "
+preexec () {
+    print -Pn "\e]0;$1\a" 
+}
+
+precmd () {
+    print -Pn "\e]0;$S_TAB_TITLE\a" 
+}
+
+PROMPT="$(vcs_prompt_char) %d> "
 
