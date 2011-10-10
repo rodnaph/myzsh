@@ -9,6 +9,8 @@ bindkey '^R' history-incremental-search-backward
 
 EDITOR=vim
 
+setopt INTERACTIVE_COMMENTS
+
 PATH=$HOME/bin:$PATH
 
 S_TAB_TITLE=""
