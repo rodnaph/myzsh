@@ -1,3 +1,9 @@
+
+if [ -e ~/Code/myzsh ]; then
+    source ~/Code/myzsh/vendor/scmbreeze/scm_breeze.sh
+    git_keyboard_shortcuts_enabled="true"
+fi
+
 set -o vi
 
 alias c=clear

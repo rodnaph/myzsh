@@ -1,0 +1,3 @@
+[submodule "vendor/scmbreeze"]
+	path = vendor/scmbreeze
+	url = git://github.com/ndbroadbent/scm_breeze.git
