@@ -13,7 +13,7 @@ bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
-EDITOR=vim
+export EDITOR=vim
 
 setopt INTERACTIVE_COMMENTS
 
