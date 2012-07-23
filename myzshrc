@@ -8,6 +8,8 @@ fi
 set -o vi
 
 alias c=clear
+alias ack='nocorrect ack '
+alias sshfs='nocorrect sshfs '
 
 bindkey -v
 bindkey '\e[3~' delete-char
@@ -40,8 +42,4 @@ precmd () {
 }
 
 PROMPT="$(vcs_prompt_char) %c> "
-
-# Java
-
-export JAVA_HOME=`/usr/libexec/java_home`
 
