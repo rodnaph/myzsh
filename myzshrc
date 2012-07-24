@@ -1,3 +1,4 @@
+#!/bin/sh
 
 if [ -e ~/Code/myzsh ]; then
     source ~/Code/myzsh/vendor/scmbreeze/scm_breeze.sh
@@ -8,6 +9,7 @@ set -o vi
 
 alias c=clear
 alias ack='nocorrect ack '
+alias sshfs='nocorrect sshfs '
 
 bindkey -v
 bindkey '\e[3~' delete-char
@@ -25,12 +27,6 @@ function tab {
     S_TAB_TITLE=$1
 }
 
-function vcs_prompt_char {
-    git branch 1>/dev/null 2>/dev/null && echo '±' && return
-    svn info 1>/dev/null 2>/dev/null && echo '☿' && return
-    echo '○'
-}
-
 preexec () {
     print -Pn "\e]0;$1\a" 
 }
@@ -39,5 +35,5 @@ precmd () {
     print -Pn "\e]0;$S_TAB_TITLE\a" 
 }
 
-PROMPT="$(vcs_prompt_char) %c> "
+PROMPT="%c> "
 
