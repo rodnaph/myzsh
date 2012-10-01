@@ -8,8 +8,11 @@ fi
 set -o vi
 
 alias c=clear
+alias v=vagrant
 alias ack='nocorrect ack '
 alias sshfs='nocorrect sshfs '
+alias composer='nocorrect composer '
+alias gap="git add -p"
 
 bindkey -v
 bindkey '\e[3~' delete-char
