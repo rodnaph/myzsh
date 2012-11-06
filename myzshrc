@@ -7,12 +7,15 @@ fi
 
 set -o vi
 
-alias c=clear
+alias g="git"
+alias c="clear"
 alias v=vagrant
 alias ack='nocorrect ack '
 alias sshfs='nocorrect sshfs '
 alias composer='nocorrect composer '
 alias gap="git add -p"
+alias t="trt "
+alias mou="open /Application/Mou.app"
 
 bindkey -v
 bindkey '\e[3~' delete-char
@@ -23,20 +26,4 @@ export EDITOR=vim
 setopt INTERACTIVE_COMMENTS
 
 PATH=$HOME/bin:$PATH
-
-S_TAB_TITLE=""
-
-function tab {
-    S_TAB_TITLE=$1
-}
-
-preexec () {
-    print -Pn "\e]0;$1\a" 
-}
-
-precmd () {
-    print -Pn "\e]0;$S_TAB_TITLE\a" 
-}
-
-PROMPT="%c> "
 
