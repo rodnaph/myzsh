@@ -22,6 +22,8 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
 export EDITOR=vim
+export GIT_EDITOR=vim
+export SVN_EDITOR=vim
 
 setopt INTERACTIVE_COMMENTS
 
