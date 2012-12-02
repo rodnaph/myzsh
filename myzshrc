@@ -15,7 +15,8 @@ alias sshfs='nocorrect sshfs '
 alias composer='nocorrect composer '
 alias gap="git add -p"
 alias t="trt "
-alias mou="open /Application/Mou.app"
+alias mou="open /Applications/Mou.app"
+alias gd="git diff"
 
 bindkey -v
 bindkey '\e[3~' delete-char
