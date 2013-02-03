@@ -1,10 +1,5 @@
 #!/bin/sh
 
-if [ -e ~/Code/myzsh ]; then
-    source ~/Code/myzsh/vendor/scmbreeze/scm_breeze.sh
-    git_keyboard_shortcuts_enabled="true"
-fi
-
 set -o vi
 
 alias g="git"
@@ -17,6 +12,7 @@ alias gap="git add -p"
 alias t="trt "
 alias mou="open /Applications/Mou.app"
 alias gd="git diff"
+alias gts="git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads"
 
 bindkey -v
 bindkey '\e[3~' delete-char
