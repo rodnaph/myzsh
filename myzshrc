@@ -6,8 +6,11 @@ set -o vi
 # oh-my-zsh location
 ZSH=$HOME/.oh-my-zsh
 
-# scm_breeze location
-SCMB_SOURCE="$HOME/.scm_breeze/scm_breeze.sh"
+# setup oh-my-zsh
+if [ ! -e $ZSH ]; then
+    echo "'OH MY ZUSH!' not found, installing..."
+    git clone git://github.com/robbyrussell/oh-my-zsh.git $ZSH
+fi
 
 # oh-my-zsh theme
 ZSH_THEME="robbyrussell"
@@ -18,8 +21,20 @@ plugins=(git osx extract)
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# load scm_breeze if available
-[ -s "$SCMB_SOURCE" ] && source $SCMB_SOURCE
+# scm_breeze location
+SCMB="$HOME/.scm_breeze"
+
+# setup scm_breeze
+if [ ! -e $SCMB ]; then
+    echo "'SCM Breeze' not found, installing..."
+    git clone git://github.com/ndbroadbent/scm_breeze.git $SCMB
+    source "$SCMB/lib/scm_breeze.sh"
+    scmbDir=$SCMB
+    _create_or_patch_scmbrc
+fi
+
+# load scm_breeze
+source "$SCMB/scm_breeze.sh"
 
 # shortcuts and aliases
 alias g="git"
