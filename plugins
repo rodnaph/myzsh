@@ -1,3 +1,0 @@
-
-plugins=(git svn osx phing vi-mode)
-
