@@ -5,18 +5,29 @@ Simple repository with all my Zsh shortcuts and plugins.
 
 ## Usage
 
-Installation should be easy, just clone the repository and source it from
-your .zshrc
+Installation should be easy, just clone the repository...
 
 ```
 git clone https://github.com/rodnaph/myzsh.git
 ```
 
-If Zsh is not already your default shell then you can make it so like this:
+Then source it from your _$HOME/.zshrc_ file...
 
 ```
-chsh -s $(which zsh)
+source ~/path/to/myzsh/myzshrc
 ```
 
-When included, all dependencies should be loaded automatically for you.
+And finally start Zsh...
+
+```
+zsh
+```
+
+## Permanent Installation
+
+If you like it then to make Zsh your default shell use this command:
+
+```
+chsh -s /bin/zsh
+```
 

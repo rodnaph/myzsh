@@ -14,6 +14,3 @@ export SVN_EDITOR=$EDITOR
 # allow hash as comment
 setopt INTERACTIVE_COMMENTS
 
-# local bin folder
-PATH=$HOME/bin:$PATH
-

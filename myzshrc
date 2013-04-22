@@ -2,6 +2,7 @@
 
 DIR="$( cd -P "$( dirname "$0" )" && pwd )"
 
+source "$DIR/core.sh";
 source "$DIR/oh-my-zsh.sh";
 source "$DIR/scm-breeze.sh"
 source "$DIR/general.sh"
