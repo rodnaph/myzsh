@@ -17,3 +17,7 @@ alias gap="git add -p"
 alias gd="git diff"
 alias gts="git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads"
 
+# git workflow
+alias pause="git add --all; git commit -m 'WIP'"
+alias resume="git reset HEAD~"
+
