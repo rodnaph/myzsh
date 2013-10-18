@@ -13,7 +13,7 @@ fi
 ZSH_THEME="robbyrussell"
 
 # oh-my-zsh plugins
-plugins=(git osx extract vi-mode lein)
+plugins=()
 
 # load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
