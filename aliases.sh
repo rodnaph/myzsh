@@ -15,6 +15,7 @@ alias composer='nocorrect composer '
 alias g="git"
 alias gap="git add -p"
 alias gd="git diff"
+alias gp="git push"
 alias gts="git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads"
 
 # git workflow
