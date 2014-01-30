@@ -5,6 +5,7 @@ alias c="clear"
 # app shortcuts
 alias t="trt "
 alias mou="open /Applications/Mou.app"
+alias iossim="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
 
 # don't bug me
 alias ack='nocorrect ack '
