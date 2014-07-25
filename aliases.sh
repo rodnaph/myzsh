@@ -28,3 +28,6 @@ alias gpf="git pull --ff-only"
 alias pause="git add --all; git commit -m 'WIP'"
 alias resume="git reset HEAD~"
 
+# misc
+alias ip="curl http://wtfismyip.com/text"
+
