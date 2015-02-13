@@ -1,7 +1,4 @@
 
-# term helpers
-alias c="clear"
-
 # app shortcuts
 alias t="trt "
 alias mou="open /Applications/Mou.app"
