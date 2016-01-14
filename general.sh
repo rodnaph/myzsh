@@ -2,6 +2,9 @@
 # enable vim mode
 set -o vi
 
+# reduce <esc> timeout for normal mode
+export KEYTIMEOUT=1
+
 # allow reverse search
 bindkey -v
 bindkey '\e[3~' delete-char
