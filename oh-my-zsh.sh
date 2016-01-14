@@ -1,4 +1,6 @@
 
+DISABLE_AUTO_UPDATE="true"
+
 # oh-my-zsh location
 ZSH=$HOME/.oh-my-zsh
 
