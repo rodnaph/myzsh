@@ -20,6 +20,7 @@ alias gd="git diff"
 alias gp="git push"
 alias gts="git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads"
 alias gpf="git pull --ff-only"
+alias gpt="git push && git push --tags"
 
 # git workflow
 alias pause="git add --all; git commit -m 'WIP'"
