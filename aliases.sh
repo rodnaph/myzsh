@@ -11,6 +11,7 @@ alias ipad="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator
 # don't bug me
 alias ack='nocorrect ack '
 alias sshfs='nocorrect sshfs '
+alias cd='nocorrect cd '
 alias composer='nocorrect composer '
 
 # git shortcuts
