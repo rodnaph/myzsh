@@ -23,6 +23,7 @@ alias gts="git for-each-ref --format='%(refname:short) <- %(upstream:short)' ref
 alias gpf="git pull --ff-only"
 alias gpt="git push && git push --tags"
 alias gbc="gb --merged | grep -v master | xargs git branch -d"
+alias gbd="gb --sort=-committerdate | head"
 
 # git workflow
 alias pause="git add --all; git commit -m 'WIP'"
@@ -30,4 +31,3 @@ alias resume="git reset HEAD~"
 
 # misc
 alias ip="curl http://wtfismyip.com/text"
-
