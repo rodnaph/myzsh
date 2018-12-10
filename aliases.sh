@@ -29,5 +29,9 @@ alias gbd="gb --sort=-committerdate | head"
 alias pause="git add --all; git commit -m 'WIP'"
 alias resume="git reset HEAD~"
 
+# github
+alias pb='git push -fu origin head'
+alias pr='pb && open "https://github.com/owsy/$(basename $PWD)/compare/$(/opt/local/bin/git branch | grep \* | awk '"'"'{print $2}'"'"')?expand=1"'
+
 # misc
 alias ip="curl http://wtfismyip.com/text"
