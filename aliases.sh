@@ -26,8 +26,7 @@ alias gbc="gb --merged | grep -v master | xargs git branch -d"
 alias gbd="gb --sort=-committerdate | head"
 
 # git workflow
-alias pause="git add --all; git commit -m 'WIP'"
-alias resume="git reset HEAD~"
+alias pause="git add --all; git commit --no-verify -m 'WIP'"
 
 # github
 alias pb='git push -fu origin head'

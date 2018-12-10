@@ -11,3 +11,12 @@ function cpd() {
     done
 }
 
+function resume() {
+    LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B);
+
+    if [[ "WIP" == "$LAST_COMMIT_MESSAGE" ]]; then
+        git reset HEAD~
+    else
+        echo "ERROR: Last commit message does not look like a WIP."
+    fi
+}
