@@ -1,16 +1,6 @@
 
-# app shortcuts
-alias t="trt "
-alias mou="open /Applications/Mou.app"
-
-# ios simulator
-alias iossim="open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app"
-alias iphone="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator -SimulateDevice 'iPhone'"
-alias ipad="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator -SimulateDevice 'iPad'"
-
 # don't bug me
 alias ack='nocorrect ack '
-alias sshfs='nocorrect sshfs '
 alias cd='nocorrect cd '
 alias composer='nocorrect composer '
 
@@ -19,18 +9,26 @@ alias g="git"
 alias gap="git add -p"
 alias gd="git diff"
 alias gp="git push"
-alias gts="git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads"
 alias gpf="git pull --ff-only"
 alias gpt="git push && git push --tags"
-alias gbc="gb --merged | grep -v master | xargs git branch -d"
-alias gbd="gb --sort=-committerdate | head"
+alias gbc="git branch --merged | grep -v master | xargs git branch -d"
+alias gbd="git branch --sort=-committerdate | head"
+alias gcn="git commit --no-verify"
+alias am="git commit --amend"
+alias gc="git commit"
+alias gb="git branch"
 
 # git workflow
 alias pause="git add --all; git commit --no-verify -m 'WIP'"
 
 # github
 alias pb='git push -fu origin head'
-alias pr='pb && open "https://github.com/owsy/$(basename $PWD)/compare/$(/opt/local/bin/git branch | grep \* | awk '"'"'{print $2}'"'"')?expand=1"'
+alias pr='pb && open "https://github.com/owsy/$(basename `git rev-parse --show-toplevel`)/compare/$(/opt/local/bin/git branch | grep \* | awk '"'"'{print $2}'"'"')?expand=1"'
 
 # misc
+alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias ip="curl http://wtfismyip.com/text"
+alias ll='ls -l'
+
+# bindhq
+alias ddiff='php -d memory_limit=2G bin/console doctrine:migrations:diff | awk '"'"'{ print $6 }'"'"' | sed  '"'"'s/"//g'"'"' | tr -d '"'"'\n'"'"' | pbcopy '
