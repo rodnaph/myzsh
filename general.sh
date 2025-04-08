@@ -11,7 +11,7 @@ bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
 
 # vim as default editor
-export EDITOR=vim
+export EDITOR=nvim
 export GIT_EDITOR=$EDITOR
 export SVN_EDITOR=$EDITOR
 

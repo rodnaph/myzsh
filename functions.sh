@@ -1,17 +1,5 @@
 #!/bin/bash
 
-function gfm { git merge "$1" --ff-only && git branch -D "$1"; }
-
-# copy the contents of a directory to another
-# usage: cpd ~/source/folder ~/dest/folder
-function cpd() {
-    s=$1;
-    d=$2;
-    for f in $s/*; do
-        cp "$f" "$d";
-    done
-}
-
 function resume() {
     FORCE=$1;
     LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B);
@@ -24,16 +12,39 @@ function resume() {
 }
 
 function br() {
-    if [ "" != "$1" ]; then
-        git checkout "$1"
-    else
-        local branches target
+  local target
+  local current_branch
 
-        #branches=$(git --no-pager branch --all --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" | sed '/^$/d') || return
+  current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-        branches=$(git --no-pager branch -vv) || return
-        target=$((echo "$branches") | fzf --no-hscroll --no-multi -n 2 --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
+  target=$(
+    git for-each-ref --sort=-committerdate --format="%(committerdate:iso8601)|%(refname:short)|%(committerdate:relative)|%(subject)" refs/heads/ \
+    | while IFS="|" read -r date branch relative subject; do
+        if [[ "$branch" == "$current_branch" ]]; then
+          continue
+        fi
 
-        git checkout $(echo "$target" | awk '{print $1}' | sed "s/.* //")
-    fi
+        date_secs=$(date -j -f "%Y-%m-%d %H:%M:%S" "${date:0:19}" +%s 2>/dev/null)
+        now_secs=$(date +%s)
+        days_ago=$(( (now_secs - date_secs) / 86400 ))
+
+        if [ "$days_ago" -le 1 ]; then
+          color="\033[1;32m"  # green
+        elif [ "$days_ago" -le 7 ]; then
+          color="\033[1;33m"  # yellow
+        else
+          color="\033[1;31m"  # red
+        fi
+
+        reset="\033[0m"
+
+        printf "%s|${color}%s${reset}|%s\n" "$branch" "$relative" "$subject"
+      done \
+    | column -t -s '|' \
+    | fzf --no-hscroll --ansi --prompt="Branch > "
+  ) || return
+
+  local branch=$(echo "$target" | sed -E 's/\x1b\[[0-9;]*m//g' | awk '{print $1}')
+  
+  git checkout "$branch"
 }

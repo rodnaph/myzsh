@@ -16,7 +16,10 @@ alias gbd="git branch --sort=-committerdate | head"
 alias gcn="git commit --no-verify"
 alias am="git commit --amend"
 alias gc="git commit"
-alias gb="git branch"
+alias gb="git branch --sort=-committerdate"
+
+# nvim
+alias vi="nvim"
 
 # git workflow
 alias pause="git add --all; git commit --no-verify -m 'WIP'"
