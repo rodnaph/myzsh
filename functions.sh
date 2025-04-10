@@ -11,13 +11,13 @@ function resume() {
     fi
 }
 
-function br() {
-  local target
+function select_branch() {
+  FZF_PROMPT="$1"
   local current_branch
 
   current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-  target=$(
+  echo $(
     git for-each-ref --sort=-committerdate --format="%(committerdate:iso8601)|%(refname:short)|%(committerdate:relative)|%(subject)" refs/heads/ \
     | while IFS="|" read -r date branch relative subject; do
         if [[ "$branch" == "$current_branch" ]]; then
@@ -41,10 +41,18 @@ function br() {
         printf "%s|${color}%s${reset}|%s\n" "$branch" "$relative" "$subject"
       done \
     | column -t -s '|' \
-    | fzf --no-hscroll --ansi --prompt="Branch > "
+    | fzf --no-hscroll --ansi --prompt="$FZF_PROMPT "
   ) || return
+}
 
-  local branch=$(echo "$target" | sed -E 's/\x1b\[[0-9;]*m//g' | awk '{print $1}')
-  
-  git checkout "$branch"
+function rb() {
+  git rebase $(select_branch "Rebase on >" | sed -E 's/\x1b\[[0-9;]*m//g' | awk '{print $1}')
+}
+
+function rbi() {
+  git rebase -i $(select_branch "Rebase interactive on >" | sed -E 's/\x1b\[[0-9;]*m//g' | awk '{print $1}')
+}
+
+function br() {
+  git checkout $(select_branch "Checkout branch >" | sed -E 's/\x1b\[[0-9;]*m//g' | awk '{print $1}')
 }
