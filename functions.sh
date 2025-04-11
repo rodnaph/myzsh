@@ -13,6 +13,8 @@ function resume() {
 
 function select_branch() {
   FZF_PROMPT="$1"
+  FZF_FLAGS="$2"
+
   local target
   local current_branch
 
@@ -42,7 +44,7 @@ function select_branch() {
         printf "%s|${color}%s${reset}|%s\n" "$branch" "$relative" "$subject"
       done \
     | column -t -s '|' \
-    | fzf --no-hscroll --ansi --prompt="$FZF_PROMPT "
+    | fzf --no-hscroll $FZF_FLAGS --ansi --prompt="$FZF_PROMPT "
   ) || return
 
   echo $target | sed -E 's/\x1b\[[0-9;]*m//g' | awk '{print $1}'
@@ -70,4 +72,14 @@ function br() {
   branch=$(select_branch "Checkout branch >") || return
 
   git checkout $branch
+}
+
+function gbd() {
+  local branches
+
+  branches=$(select_branch "Delete branches (shift+tab to select) >" "--multi") || return
+
+  while IFS= read -r branch; do
+    git branch -D $branch
+  done <<< "$branches"
 }

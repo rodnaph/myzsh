@@ -5,14 +5,12 @@ alias cd='nocorrect cd '
 alias composer='nocorrect composer '
 
 # git shortcuts
-alias g="git"
 alias gap="git add -p"
 alias gd="git diff"
 alias gp="git push"
 alias gpf="git pull --ff-only"
 alias gpt="git push && git push --tags"
 alias gbc="git branch --merged | grep -v main | xargs git branch -d"
-alias gbd="git branch --sort=-committerdate | head"
 alias gcn="git commit --no-verify"
 alias am="git commit --amend"
 alias gc="git commit"
