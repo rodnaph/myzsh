@@ -11,3 +11,5 @@ source "$DIR/general.sh"
 source "$DIR/aliases.sh"
 source "$DIR/functions.sh"
 
+eval "$(fzf --zsh)"
+eval "$(scmpuff init -s)"
