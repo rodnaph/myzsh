@@ -25,7 +25,7 @@ alias vi="nvim"
 alias pause="git add --all; git commit --no-verify -m 'WIP'"
 alias pu="rm -rf var/cache/test/twig; php -d memory_limit=2G vendor/bin/phpunit --order-by default"
 alias puu="SYMFONY_DEPRECATIONS_HELPER='' php -d memory_limit=2G vendor/bin/phpunit --order-by default tests/unit"
-alias mps="make phpstan"
+alias mps="just phpstan"
 
 # github
 alias pb='git push -fu origin head'
@@ -36,7 +36,6 @@ alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias ip="curl http://wtfismyip.com/text"
 alias ll='ls -l'
 alias cs="vendor/bin/mago fmt"
-alias m="make"
 
 # bindhq
 alias cc="rm -rf var/cache && rm -rf var/cache"
