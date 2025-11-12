@@ -35,7 +35,8 @@ alias pr='pb && open "https://github.com/owsy/$(basename `git rev-parse --show-t
 alias uuidgen='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias ip="curl http://wtfismyip.com/text"
 alias ll='ls -l'
-alias cs="vendor/bin/mago fmt"
+alias cs="just fmt-php-fix && just lint-php-fix"
+alias ja="just analyse"
 
 # bindhq
 alias cc="rm -rf var/cache && rm -rf var/cache"
